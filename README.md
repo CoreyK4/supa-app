@@ -1,103 +1,36 @@
-# PostgreSQL example using Supabase
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-This example shows you how to connect to a PostgreSQL database on [Supabase](https://supabase.com/) using Prisma, and use [Prisma Client](https://www.prisma.io/client) in a TypeScript script to read and write data.
+## Getting Started
 
-## How to use
-
-Download this example:
-
-```
-curl https://codeload.github.com/prisma/prisma-examples/tar.gz/latest | tar -xz --strip=2 prisma-examples-latest/databases/postgresql-supabase
-```
-
-Install npm dependencies:
-```
-cd postgresql-supabase
-npm install
-```
-
-<details><summary><strong>Alternative:</strong> Clone the entire repo</summary>
-
-Clone this repository:
-
-```
-git clone git@github.com:prisma/prisma-examples.git --depth=1
-```
-
-Install npm dependencies:
-
-```
-cd prisma-examples/databases/postgresql-supabase
-npm install
-```
-</details>
-
-### 2. Set up Supabase
-
-
-Create a `.env` file at the root of your folder. Copy and update the following environment variables in the `.env` file:
-
-
-```sh
-touch .env
-```
-
-#### Using a local development environment
-
-If you have the Supabase CLI locally installed and have logged in, run the following command to start up Supabase
-
-```sh
-npx supabase start
-```
-
-```sh
-# .env
-DATABASE_URL="postgresql://postgres:postgres@localhost:54322/postgres"
-```
-
-#### Using a managed environment
-
-If you're using the hosted version, create another database that will serve as the [shadow database](https://www.prisma.io/docs/concepts/components/prisma-migrate/shadow-database#cloud-hosted-shadow-databases-must-be-created-manually).
-
-```
-postgres=> CREATE DATABASE postgres_shadow;
-postgres=> exit
-```
-
-Next, update, your `.env` file with your `DATABASE_URL` and `SHADOW_DATABASE_URL` variables accordingly. Be sure to update the password (`[YOUR-PASSWORD]`) and project reference (`[YOUR-PROJECT-REF]`):
-
-```
-# .env
-DATABASE_URL="postgres://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres"
-SHADOW_DATABASE_URL="postgres://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres_shadow"
-```
-
-### Create the database schema
-
-Run the following command to create a migration file with the SQL necessary to create the database schema:
-
-```
-npx prisma migrate dev --name init
-```
-
-You should see the following output:
-
-```
-Your database is now in sync with your schema.
-```
-
-### 3. Run the script
-
-For the script to work, you first need to execute the [seed](./prisma/seed.ts) script to seed your database. You can do that using the following command:
-
-```
-npx prisma db seed
-```
-
-Then run the script [`script.ts`](./script.ts), using the following command:
+First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-As a next step, explore the `script.ts` file to see how to use Prisma Client to read and write data in the database.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
